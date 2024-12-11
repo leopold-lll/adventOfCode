@@ -78,6 +78,27 @@ def part1(mat):
     print("Part1 - Le occorrenze di XMAS  sono:", occ)
 
 
+def part2(mat):
+    # È richiesta una logica completamente diversa...
+    # Bisogna ragionare in maniera spaziale (Forse è più facile!)
+    # Per ogni A cercherò le M e S associate! (in ognuna delle 4 direzioni!)
+    # M.S
+    # .A.
+    # M.S
+    occ = 0
+    for i in range(1, len(mat)-1):
+        for j in range(1, len(mat)-1):
+            if mat[i][j] == "A" and (
+                    (mat[i+1][j+1] == "M" and mat[i+1][j-1] == "M" and mat[i-1][j+1] == "S" and mat[i-1][j-1] == "S") or
+                    (mat[i-1][j+1] == "M" and mat[i-1][j-1] == "M" and mat[i+1][j+1] == "S" and mat[i+1][j-1] == "S") or
+                    (mat[i+1][j+1] == "M" and mat[i-1][j+1] == "M" and mat[i+1][j-1] == "S" and mat[i-1][j-1] == "S") or
+                    (mat[i+1][j-1] == "M" and mat[i-1][j-1] == "M" and mat[i+1][j+1] == "S" and mat[i-1][j+1] == "S")):
+                # print("Found at: ", i, j)
+                occ += 1
+    print("Part2 - Le occorrenze di X-MAS sono:", occ)
+
+
 if __name__ == "__main__":
     matFull = read_input("input.txt")
     part1(matFull)
+    part2(matFull)

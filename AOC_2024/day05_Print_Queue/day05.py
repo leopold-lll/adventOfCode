@@ -1,5 +1,9 @@
-import re
 from pprint import pprint
+
+def get_file_path(file_name):
+    import os
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), file_name)
+
 
 
 def read_input(file_name="sample.txt"):
@@ -109,12 +113,12 @@ def main(page_after, sequences):
 
 
 if __name__ == "__main__":
-    page_after, sequences = read_input("input.txt")
+    page_after, sequences = read_input(get_file_path("sample.txt"))
     main(page_after, sequences)
     # Part1: The sum of middle values of original valid sequences is:   4637
     # Part2: The sum of middle values of sequences after correction is: 6370
 
-    # Topological sorting example:
+    # # Topological sorting example:
     # graph = {29: set(), 47: {53, 61, 29}, 53: {29},
     #          61: {53, 29}, 75: {61, 53, 29, 47}}
     # result = topological_sort(graph)
